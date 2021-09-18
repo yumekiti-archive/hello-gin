@@ -1,0 +1,22 @@
+<div>
+  <main role="main" class="container text-center">
+    <div class="mt-5">
+      <h1>Welcome to Vugu</h1>
+      <p class="lead">This page is being rendered via 
+        <a @click='event.PreventDefault();c.ShowWasm=!c.ShowWasm' 
+           href="https://webassembly.org/">WebAssembly</a>...
+      </p>
+      <div vg-if='c.ShowWasm' class="alert 
+           alert-primary" role="alert">
+        <strong>WebAssembly</strong> (abbreviated Wasm) is a 
+        binary instruction format...
+      </div>
+    </div>
+  </main>
+</div>
+
+<script type="application/x-go">
+type Root struct {
+    ShowWasm bool `vugu:"data"`
+}
+</script>
