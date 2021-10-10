@@ -13,15 +13,3 @@ services:
         working_dir: /mnt/api
         # command: go mod init example.com/m
         command: go run main.go
-
-    vugu:
-        build: ./vugu
-        container_name: app
-        volumes:
-            - ../app:/mnt/app
-        ports:
-            - 8080:8080
-        tty: true
-        working_dir: /mnt/app
-        # command: go mod init example.com/m
-        command: go run main.go
