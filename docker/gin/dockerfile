@@ -4,4 +4,5 @@ RUN apk update && \
     apk add git
 
 RUN go get -u github.com/gin-gonic/gin && \
-    go get github.com/jinzhu/gorm
+    go get github.com/jinzhu/gorm@v1.9.16 && \
+    go get github.com/jinzhu/gorm/dialects/mysql

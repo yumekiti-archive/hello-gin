@@ -1,5 +1,11 @@
 dc := docker-compose -f ./docker/docker-compose.yml
 
+.PHONY: init
+init:
+	$(dc) up -d --build
+	bash ./docker/mysql/sql.sh
+	$(dc) exec -d gin /bin/sh -c "go run main.go"
+
 .PHONY: up
 up:
 	$(dc) up -d --build
@@ -22,7 +28,11 @@ logs:
 
 .PHONY: gin
 gin:
-	$(dc) exec /bin/sh gin
+	$(dc) exec gin /bin/sh
+
+.PHONY: db
+db:
+	$(dc) exec db /bin/sh
 
 .PHONY: docker-rm
 docker-rm:

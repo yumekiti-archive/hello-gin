@@ -11,5 +11,15 @@ services:
             - 3000:3000
         tty: true
         working_dir: /mnt/api
-        # command: go mod init example.com/m
-        command: go run main.go
+
+    db:
+        image: mysql:5.7
+        container_name: db
+        environment:
+            MYSQL_DATABASE: database
+            MYSQL_USER: user
+            MYSQL_PASSWORD: password
+            MYSQL_ROOT_PASSWORD: root
+            TZ: Asia/Tokyo
+        volumes:
+            - ./mysql/my.cnf:/etc/mysql/my.cnf
